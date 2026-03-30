@@ -738,7 +738,7 @@ for col in numerical_cols:
 
 """**Graphical Analysis — Distribution Plots (Histogram + Box + Violin)**"""
 
-**Outlier analysis — exact counts and decisions from the IQR output:**
+"""**Outlier analysis — exact counts and decisions from the IQR output:**
 
 1.  **`insured_period` — 1,233 outliers (17.6%):**
     IQR = 0.00 (Q1 = Q3 = 1.0). Every policy shorter than 0.997 is flagged. This is not a data quality problem — it is a **structural feature** of the distribution. The vast majority of policies are full-year (1.0), making the IQR mathematically zero. Short-duration policies are legitimate and informative. **No removal.**
