@@ -104,14 +104,14 @@ We load the data dictionary **first** so we can reference it as we inspect the a
 
 # ── Download and load the variable description file ──────────────────────────
 url_desc = "https://drive.google.com/uc?export=download&id=1suexiz-Q6_2MCkifBqhvnk9aK48UlRBs"
-gdown.download(url_desc, "data_description.csv", quiet=True)
+#gdown.download(url_desc, "data_description.csv", quiet=True)
 
-df_desc = pd.read_csv("data_description.csv")  # load into DataFrame
+#df_desc = pd.read_csv("data_description.csv")  # load into DataFrame
 
 print("✓ Data dictionary loaded successfully.")
 
 # Display the full data dictionary for reference
-df_desc
+#df_desc
 
 """**Main Dataset — Building Records**"""
 
