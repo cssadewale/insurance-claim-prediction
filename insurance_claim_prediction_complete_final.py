@@ -422,7 +422,7 @@ missing_report = pd.DataFrame({
 }).sort_values(by='Missing (%)', ascending=False)
 
 print("Missing Values Report (all columns):")
-display(missing_report)
+print(missing_report)
 
 # ── Show only columns that have missing values ────────────────────────────────
 print("Columns WITH missing values:")
