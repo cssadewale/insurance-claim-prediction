@@ -760,9 +760,10 @@ for col in numerical_cols:
 
 **Overall decision:** No rows removed for outliers. The two genuine concerns — `building_dimension` extreme values and `insured_period` short durations — will be managed through transformation and model selection respectively.
 
-"""**Insights from numerical features distribution analysis: exact statistics from the output:**
+**Insights from numerical features distribution analysis: exact statistics from the output:**
 
-1.  **`insured_period` Highly Left (Negative) Skewed (skew = 2.7181, kurt = +6.1902):**
+
+"""1.  **`insured_period` Highly Left (Negative) Skewed (skew = 2.7181, kurt = +6.1902):**
     Mean = 0.9083, Median = 1.0000. The median being exactly 1.0 confirms that **more than 50% of all policies are full-year**. The kurtosis of 6.19 indicates an extremely tall, narrow peak at 1.0 with heavy tails. The box plot will show a very tight IQR near 1.0 with numerous "outlier" points on the left — these are legitimate short-duration policies.
 
 2.  **`building_dimension`  Highly Right (Positive) Skewed (skew = +3.1169, kurt = +13.4027):**
@@ -772,7 +773,7 @@ for col in numerical_cols:
     Min = 0, Max = 10, Mean = **2.2223**, Median = 2.0. Mean and median are very close — the skew is moderate. Kurtosis of −0.27 (platykurtic) suggests a relatively flat distribution compared to normal. No outliers detected by IQR.
 
 4.  **`building_age` (derived feature):** Age range = 0 to 316 years, Mean = 49.1 years. The 0–316 range with a mean of only 49.1 confirms strong positive skew — most buildings are relatively young, but a few very old buildings pull the distribution hard to the right.
-    """
+"""
 
 ### C. Categorical Features Distribution Analysis
 
