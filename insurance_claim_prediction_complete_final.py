@@ -762,8 +762,7 @@ for col in numerical_cols:
 
 **Insights from numerical features distribution analysis: exact statistics from the output:**
 
-
-"""1.  **`insured_period` Highly Left (Negative) Skewed (skew = 2.7181, kurt = +6.1902):**
+1.  **`insured_period` Highly Left (Negative) Skewed (skew = 2.7181, kurt = +6.1902):**
     Mean = 0.9083, Median = 1.0000. The median being exactly 1.0 confirms that **more than 50% of all policies are full-year**. The kurtosis of 6.19 indicates an extremely tall, narrow peak at 1.0 with heavy tails. The box plot will show a very tight IQR near 1.0 with numerous "outlier" points on the left — these are legitimate short-duration policies.
 
 2.  **`building_dimension`  Highly Right (Positive) Skewed (skew = +3.1169, kurt = +13.4027):**
