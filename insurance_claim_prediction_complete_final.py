@@ -772,6 +772,7 @@ for col in numerical_cols:
     Min = 0, Max = 10, Mean = **2.2223**, Median = 2.0. Mean and median are very close — the skew is moderate. Kurtosis of −0.27 (platykurtic) suggests a relatively flat distribution compared to normal. No outliers detected by IQR.
 
 4.  **`building_age` (derived feature):** Age range = 0 to 316 years, Mean = 49.1 years. The 0–316 range with a mean of only 49.1 confirms strong positive skew — most buildings are relatively young, but a few very old buildings pull the distribution hard to the right.
+    """
 
 ### C. Categorical Features Distribution Analysis
 
