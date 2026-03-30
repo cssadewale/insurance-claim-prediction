@@ -2016,7 +2016,7 @@ print("✓ Feature importance chart saved.")
 """
 
 # ── Install SHAP and import ────────────────────────────────────────────────────
-!pip install shap -q
+pip install shap -q
 
 import shap
 print("✓ SHAP imported successfully.")
