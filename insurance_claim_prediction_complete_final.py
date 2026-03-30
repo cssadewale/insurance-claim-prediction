@@ -762,13 +762,13 @@ for col in numerical_cols:
 
 """**Insights from numerical features distribution analysis: exact statistics from the output:**
 
-1.  **`insured_period` — Highly Left (Negative) Skewed (skew = −2.7181, kurt = +6.1902):**
+1.  **`insured_period` Highly Left (Negative) Skewed (skew = −2.7181, kurt = +6.1902):**
     Mean = 0.9083, Median = 1.0000. The median being exactly 1.0 confirms that **more than 50% of all policies are full-year**. The kurtosis of 6.19 indicates an extremely tall, narrow peak at 1.0 with heavy tails. The box plot will show a very tight IQR near 1.0 with numerous "outlier" points on the left — these are legitimate short-duration policies.
 
-2.  **`building_dimension` — Highly Right (Positive) Skewed (skew = +3.1169, kurt = +13.4027):**
+2.  **`building_dimension`  Highly Right (Positive) Skewed (skew = +3.1169, kurt = +13.4027):**
     Min = 1 m², Max = 20,940 m², Mean = 1,884.80 m², Median = 1,083.00 m². The mean is **74% higher than the median** — a definitive sign of right skew. Variance = 5,212,682 — the standard deviation of 2,283 m² exceeds the mean, meaning the spread is greater than the average value itself. Kurtosis of 13.40 is extreme — the distribution has a very sharp peak with an extraordinarily long right tail. The box plot will show a dense cluster of small buildings with a long tail of outliers.
 
-3.  **`number_of_windows` — Moderately Skewed (skew = +0.7970, kurt = −0.2659):**
+3.  **`number_of_windows` Moderately Skewed (skew = +0.7970, kurt = −0.2659):**
     Min = 0, Max = 10, Mean = **2.2223**, Median = 2.0. Mean and median are very close — the skew is moderate. Kurtosis of −0.27 (platykurtic) suggests a relatively flat distribution compared to normal. No outliers detected by IQR.
 
 4.  **`building_age` (derived feature):** Age range = 0 to 316 years, Mean = 49.1 years. The 0–316 range with a mean of only 49.1 confirms strong positive skew — most buildings are relatively young, but a few very old buildings pull the distribution hard to the right.
@@ -777,7 +777,7 @@ for col in numerical_cols:
 
 We examine the frequency distribution of each categorical variable — both numerically (counts and proportions) and graphically (count plots with percentage annotations).
 
-**Non-Graphical Summary — Counts and Proportions**
+**Non-Graphical Summary: Counts and Proportions**
 """
 
 # ── Summary statistics for categorical features ────────────────────────────────
@@ -800,7 +800,7 @@ for col in cat_df.columns:
     summary = counts.join(proportions)
     display(summary)
 
-"""**Categorical feature distributions — exact figures from the output:**
+"""**Categorical feature distributions: exact figures from the output:**
 
 1.  **`building_painted`**: **5,308 painted (75.68%)** vs 1,706 not painted (24.32%). Most common category (`top = V`, `freq = 5,308`). Painted buildings dominate at a 3.1:1 ratio.
 
@@ -872,7 +872,7 @@ The **Pearson correlation coefficient** measures the linear relationship between
 
 We focus particularly on the correlation of each feature **with `claim`** — the higher the absolute value, the more directly informative the feature is likely to be.
 
-**Non-Graphical — Correlation Matrix Table**
+**Non-Graphical: Correlation Matrix Table**
 """
 
 # ── Compute the Pearson correlation matrix for numerical features ─────────────
@@ -882,7 +882,7 @@ correlation_matrix = df[numerical_cols].corr().round(3)
 print("Pearson Correlation Matrix (numerical features):")
 display(correlation_matrix)
 
-"""**Graphical — Correlation Heatmap**"""
+"""**Graphical: Correlation Heatmap**"""
 
 # ── Visualise the correlation matrix as an annotated heatmap ─────────────────
 num_df             = df.select_dtypes(exclude='object')
@@ -907,7 +907,7 @@ plt.show()
 
 print("✓ Correlation heatmap generated.")
 
-"""**Key insights from correlation analysis — exact values from the output:**
+"""**Key insights from correlation analysis: exact values from the output:**
 
 1.  **Correlations with `claim` (Target Variable):**
     *   `building_dimension` (**+0.292**): The strongest single numerical predictor. Moderate positive — larger buildings have meaningfully higher claim rates.
@@ -930,7 +930,7 @@ We examine how pairs of categorical features distribute across each other. This 
 * Features that are highly correlated (redundant information)
 * Interesting cross-category patterns that may inform feature interactions
 
-**Non-Graphical — Contingency Tables (Cross-Tabulations)**
+**Non-Graphical: Contingency Tables (Cross-Tabulations)**
 """
 
 # ── Generate contingency tables for all pairs of categorical features ────────
@@ -946,7 +946,7 @@ for col1, col2 in itertools.combinations(cat_df.columns, 2):
     ct = pd.crosstab(df[col1], df[col2])
     display(ct)
 
-"""**Graphical — Grouped Count Plots**"""
+"""**Graphical: Grouped Count Plots**"""
 
 # ── Grouped count plots for each pair of categorical features ─────────────────
 categorical_features = df.select_dtypes(include='object').columns.tolist()
@@ -966,7 +966,7 @@ for col1, col2 in itertools.combinations(categorical_features, 2):
 
 print("✓ Categorical pairwise graphical analysis complete.")
 
-"""**Key insights from categorical pairwise contingency tables — specific findings from the output:**
+"""**Key insights from categorical pairwise contingency tables: specific findings from the output:**
 
 *   **`building_fenced` vs `garden` — Near-perfect structural correspondence (most important finding):**
     | | No Garden (O) | Has Garden (V) |
@@ -997,7 +997,7 @@ print("✓ Categorical pairwise graphical analysis complete.")
 
 We now examine how numerical features differ between buildings that claimed (`claim = 1`) and those that did not (`claim = 0`). This directly reveals which numerical features are the strongest predictors.
 
-**Non-Graphical — Grouped Descriptive Statistics**
+**Non-Graphical: Grouped Descriptive Statistics**
 """
 
 # ── Grouped statistics: mean, median, std for each numerical feature by claim ──
@@ -1016,7 +1016,7 @@ for feature in numerical_features:
 
 print("\n✓ Grouped statistics analysis complete.")
 
-"""**Graphical — Box Plots by Claim Status**
+"""**Graphical: Box Plots by Claim Status**
 
 Box plots are ideal for comparing distributions across categories — the box shows the IQR (middle 50% of data), the line inside is the median, and the whiskers extend to 1.5 × IQR. Any points beyond the whiskers are outliers.
 """
@@ -1046,7 +1046,7 @@ plt.show()
 
 print("✓ Box plots for numerical features vs claim status generated.")
 
-"""**Key insights from numerical features grouped by claim status — exact figures from the output:**
+"""**Key insights from numerical features grouped by claim status: exact figures from the output:**
 
 *   **`building_dimension` — Strongest separator:**
     | | Mean | Median | Std |
@@ -1082,7 +1082,7 @@ print("✓ Box plots for numerical features vs claim status generated.")
 
 We now investigate how claim rates vary across the categories of each categorical feature. This reveals whether certain building types, settlement patterns, or structural characteristics are disproportionately associated with claims.
 
-**Non-Graphical — Claim Rate by Category**
+**Non-Graphical: Claim Rate by Category**
 """
 
 # ── Claim rate (mean, median, std) grouped by each categorical feature ────────
@@ -1102,7 +1102,7 @@ for col in cat_df.columns:
 
 print("\n✓ Categorical vs claim grouped analysis complete.")
 
-"""**Graphical — Count Plots by Claim Status with Percentages**"""
+"""**Graphical: Count Plots by Claim Status with Percentages**"""
 
 # ── Count plots: each categorical feature split by claim status ───────────────
 categorical_features = df.select_dtypes(include=['object']).columns
