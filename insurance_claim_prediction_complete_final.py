@@ -2370,7 +2370,7 @@ import gdown  # or requests, boto3 for S3, etc.
 @st.cache_resource
 def load_model():
     # Download from Google Drive, S3, Dropbox, etc.
-    url = 'https://drive.google.com/uc?id=11UPPIieU8SaHBFTk_Xm-Ex4DTHE8HmjA/
+    url = 'https://drive.google.com/uc?id=11UPPIieU8SaHBFTk_Xm-Ex4DTHE8HmjA/'
     output = 'model.joblib'
     gdown.download(url, output, quiet=False)
     
