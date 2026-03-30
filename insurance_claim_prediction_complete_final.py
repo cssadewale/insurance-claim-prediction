@@ -71,7 +71,7 @@ This involves importing all necessary libraries for data importation, manipulati
 # Install ydata_profiling for automated EDA report generation
 #!pip install ydata_profiling
 
-from ydata_profiling import ProfileReport  # generates an automated HTML EDA report
+#from ydata_profiling import ProfileReport  # generates an automated HTML EDA report
 
 """**Step 2 — Import all core libraries**"""
 
