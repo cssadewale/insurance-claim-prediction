@@ -5,4 +5,3 @@ matplotlib>=3.6.0
 scikit-learn>=1.2.0
 joblib>=1.2.0
 shap
-ydata_profiling
