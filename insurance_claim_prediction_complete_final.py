@@ -776,7 +776,7 @@ for col in numerical_cols:
 
 ### C. Categorical Features Distribution Analysis
 
-We examine the frequency distribution of each categorical variable — both numerically (counts and proportions) and graphically (count plots with percentage annotations).
+"""We examine the frequency distribution of each categorical variable — both numerically (counts and proportions) and graphically (count plots with percentage annotations).
 
 **Non-Graphical Summary: Counts and Proportions**
 """
