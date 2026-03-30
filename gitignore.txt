@@ -1,0 +1,60 @@
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# ── Large Model Files (exceed GitHub's 25 MB limit) ───────────────────────────
+# The trained model is hosted on Google Drive and downloaded at runtime.
+# Do NOT commit .joblib or .pkl files — they will be rejected by GitHub.
+*.joblib
+*.pkl
+*.pickle
+*.h5
+*.pt
+*.pth
+
+# ── Jupyter Notebook Checkpoints ──────────────────────────────────────────────
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# ── Data Files (loaded from Google Drive in the notebook) ─────────────────────
+data.csv
+data_description.csv
+*.xlsx
+*.parquet
+
+# ── Streamlit-generated plot files (produced when notebook/app runs) ──────────
+confusion_matrices.png
+roc_curves.png
+precision_recall_curves.png
+shap_summary_dot.png
+shap_summary_bar.png
+shap_dependence.png
+shap_waterfall.png
+feature_importance_rf.png
+transformations_before_after.png
+target_distribution.png
+categorical_distributions.png
+correlation_heatmap.png
+numerical_vs_claim.png
+categorical_vs_claim.png
+dist_*.png
+
+# ── Environment ───────────────────────────────────────────────────────────────
+.env
+.venv/
+venv/
+env/
+
+# ── macOS ─────────────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
