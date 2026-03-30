@@ -38,7 +38,7 @@ st.set_page_config(
 #   2. Right-click the file → Share → "Anyone with the link" → Copy link
 #   3. The link looks like: https://drive.google.com/file/d/FILE_ID_HERE/view
 #   4. Paste just the FILE_ID_HERE part below
-MODEL_GDRIVE_FILE_ID = "YOUR_GDRIVE_FILE_ID_HERE"
+MODEL_GDRIVE_FILE_ID = "11UPPIieU8SaHBFTk_Xm-Ex4DTHE8HmjA"
 MODEL_LOCAL_PATH     = "best_random_forest_model.joblib"
 
 @st.cache_resource   # cache: downloads once, reuses across all user interactions
