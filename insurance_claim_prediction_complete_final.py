@@ -116,8 +116,21 @@ print("✓ Data dictionary loaded successfully.")
 """**Main Dataset — Building Records**"""
 
 # ── Download and load the main building dataset ───────────────────────────────
-url_data = "https://drive.google.com/uc?export=download&id=10mm9VnlmkfR1-hlhjLKvgsMu9i7Vlwr1"
-gdown.download(url_data, "data.csv", quiet=True)
+import gdown
+import os
+
+# Your file ID from the URL
+file_id = "10mm9VnlmkfR1-hlhjLKvgsMu9i7Vlwr1"
+url_desc = f"https://drive.google.com/uc?id={file_id}"
+
+# Only download if file doesn't exist
+if not os.path.exists("data_description.csv"):
+    gdown.download(url_desc, "data_description.csv", quiet=False)
+
+
+
+#url_data = "https://drive.google.com/uc?export=download&id=10mm9VnlmkfR1-hlhjLKvgsMu9i7Vlwr1"
+#gdown.download(url_data, "data.csv", quiet=True)
 
 df = pd.read_csv("data.csv")  # load into DataFrame
 
