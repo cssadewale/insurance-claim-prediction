@@ -410,7 +410,7 @@ ValueError: X has 15 features, but RandomForestClassifier is expecting 13 featur
 | 📚 **Teaching** | Mathematics, Further Mathematics, Chemistry, Physics — 10+ years, Lagos & Ogun State, Nigeria |
 | 🏢 **Organisation** | HMG Concepts (His Marvellous Grace Educational Consult) — Visioner & Data Lead since 2015 |
 | 🛠️ **Stack** | Python · Scikit-learn · Pandas · SHAP · SQL · Power BI · Tableau · Streamlit |
-| 🌐 **Portfolio** | [cssadewale.github.io](https://cssadewale.github.io) |
+| 🌐 **Portfolio** | [cssadewale.github.io](https://cssadewale.pages.dev) |
 
 ---
 
