@@ -1,0 +1,17 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Building Insurance Claim Prediction — Streamlit App Dependencies
+#
+# NOTE: This file contains ONLY what app.py imports.
+# ydata-profiling and shap are notebook-only and are intentionally excluded —
+# they are incompatible with Python 3.14 and are not needed at runtime.
+#
+# Python version is pinned to 3.11 via runtime.txt
+# ─────────────────────────────────────────────────────────────────────────────
+
+pandas>=1.5.0,<3.0.0
+numpy>=1.22.0,<2.0.0
+scikit-learn>=1.1.0,<2.0.0
+imbalanced-learn>=0.9.0,<1.0.0
+joblib>=1.1.0
+streamlit>=1.28.0
+gdown>=4.6.0
