@@ -11,6 +11,7 @@ import numpy as np
 import pandas as pd
 import joblib
 import gdown
+from pathlib import Path
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PAGE CONFIGURATION  (must be the very first Streamlit call)
@@ -86,7 +87,7 @@ st.markdown("""
 # On first run (e.g., on Streamlit Cloud), gdown downloads it automatically.
 # On subsequent runs, the cached file on disk is used directly.
 # ─────────────────────────────────────────────────────────────────────────────
-MODEL_PATH = "best_random_forest_model.joblib"
+MODEL_PATH = Path(__file__).resolve().parent / "best_random_forest_model.joblib"
 GDRIVE_URL = "https://drive.google.com/uc?id=1AlshXgY5MlJYE5JbnXq8mWoy0eteeVAa"
 
 
@@ -100,18 +101,38 @@ def load_model():
     loading. The @st.cache_resource decorator ensures this runs only once
     per session regardless of user interactions.
     """
-    if not os.path.exists(MODEL_PATH):
+    if not MODEL_PATH.exists():
         with st.spinner("⏳ Downloading model from Google Drive — this only happens once..."):
-            gdown.download(GDRIVE_URL, MODEL_PATH, quiet=False)
+            downloaded = gdown.download(GDRIVE_URL, str(MODEL_PATH), quiet=False)
+        if not downloaded or not MODEL_PATH.exists():
+            st.error(
+                "❌ Model download failed. Check the Google Drive permission, "
+                "file ID, or deployment network connection."
+            )
+            st.stop()
 
-    if not os.path.exists(MODEL_PATH):
+    try:
+        loaded = joblib.load(MODEL_PATH)
+    except Exception as exc:
+        # Google Drive can return an HTML permission/quota page with a .joblib
+        # filename. Remove the invalid cache so the next deployment can retry.
+        try:
+            MODEL_PATH.unlink()
+        except OSError:
+            pass
         st.error(
-            "❌ Model download failed. "
-            "Please check your internet connection or the Google Drive link in app.py."
+            "❌ The downloaded model is invalid or incompatible. "
+            f"Details: {type(exc).__name__}: {exc}"
         )
         st.stop()
 
-    loaded = joblib.load(MODEL_PATH)
+    if not hasattr(loaded, "n_features_in_") or loaded.n_features_in_ != 13:
+        st.error(
+            "❌ Model schema mismatch: this app requires a model trained on "
+            f"13 features, but the artifact reports "
+            f"{getattr(loaded, 'n_features_in_', 'unknown')}."
+        )
+        st.stop()
     return loaded
 
 
